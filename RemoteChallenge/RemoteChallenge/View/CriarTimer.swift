@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CriarTimer.swift
 //  RemoteChallenge
 //
 //  Created by Fabrício Guilhermo on 13/05/20.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CriarTimer: View {
     var body: some View {
-        Text("Hello, World!")
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CriarTimer_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CriarTimer()
     }
 }
