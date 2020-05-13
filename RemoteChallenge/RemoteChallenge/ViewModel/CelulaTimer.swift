@@ -14,23 +14,24 @@ struct CelulaTimer: View {
         VStack {
             HStack {
                 Text("Timer")
-                    .modifier(TextCustomView())
+                    .modifier(TextCustomView(defaultFont: .titleCell))
                 Spacer()
                 Text("04:20:30")
-                    .modifier(TextCustomView(fontSize: 22))
+                    .modifier(TextCustomView(defaultFont: .totalTimerCell))
             }
             
             HStack {
                 Text("Passo único")
+                    .modifier(TextCustomView(defaultFont: .subtitleCell))
+
                 Spacer()
             }
-            .modifier(TextCustomView(fontSize: 24, fontStyle: "SFProDisplay-Semibold"))
-            
+
             HStack {
                 Text("2:15:02")
+                    .modifier(TextCustomView(defaultFont: .stepTimerCell))
                 Spacer()
             }
-            .modifier(TextCustomView(fontSize: 72, fontStyle: "SFProDisplay-Bold"))
         }
         .padding(.leading)
         .padding(.trailing)
@@ -44,6 +45,6 @@ struct CelulaTimer: View {
 struct CelulaTimer_Previews: PreviewProvider {
     static var previews: some View {
         CelulaTimer()
-            .previewLayout(.fixed(width: 375, height: 144))
+            .previewLayout(.fixed(width: 375, height: 168))
     }
 }

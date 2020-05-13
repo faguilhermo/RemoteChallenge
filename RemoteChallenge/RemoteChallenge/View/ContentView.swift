@@ -33,7 +33,7 @@ struct ContentView: View {
                 Text("Toque no '+' e adcione um timer")
                     .padding(.leading)
                     .padding(.bottom, 40)
-                    .modifier(TextCustomView(fontSize: 48, fontStyle: "SFProDisplay-Light"))
+                    .modifier(TextCustomView(defaultFont: .warningMessage))
                 Spacer()
             }
             Spacer()
