@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @State var showingDetail = false
-
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button(action: {
+                    
                     self.showingDetail.toggle()
                 }) {
                     Image(uiImage: #imageLiteral(resourceName: "add"))
@@ -29,12 +30,10 @@ struct ContentView: View {
             }
             Spacer()
             HStack {
-                Text("Clique no '+' e adcione um timer")
-                    .font(.system(size: 48))
-                    .fontWeight(.light)
-                    .foregroundColor(Color("secondColor"))
+                Text("Toque no '+' e adcione um timer")
                     .padding(.leading)
                     .padding(.bottom, 40)
+                    .modifier(TextCustomView(fontSize: 48, fontStyle: "SFProDisplay-Light"))
                 Spacer()
             }
             Spacer()
