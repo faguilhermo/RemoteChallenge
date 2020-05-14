@@ -11,15 +11,13 @@ import SwiftUI
 struct ContentView: View {
     
     @State var addTimer = false
-    
+
     var body: some View {
         VStack {
             ZStack {
 
                 Color("mainColor")
                     .edgesIgnoringSafeArea(.all)
-                
-                 
                 
                 HStack {
 
@@ -46,7 +44,7 @@ struct ContentView: View {
                  .padding(.init(top: 50, leading: 20, bottom: 20, trailing: 20))
                 
                 HStack {
-                    Text("Toque no \"+\" e adcione um timer")
+                    Text("Toque no \"+\" para adicionar um timer.")
                         .modifier(TextCustomView(defaultFont: .warningMessage))
 
                     Spacer()
@@ -55,6 +53,7 @@ struct ContentView: View {
             }
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

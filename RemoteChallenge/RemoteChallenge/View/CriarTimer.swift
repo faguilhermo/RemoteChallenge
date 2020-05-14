@@ -23,7 +23,7 @@ struct CriarTimer: View {
     @State private var pauseBetweenSteps = false
     
     
-    @ObservedObject var timer = TimerModel()
+    @State var timer = TimerModel()
     
     private let hours = [Int](0...24)
     private let minutes = [Int](0...60)
@@ -178,7 +178,8 @@ struct CriarTimer: View {
         .padding(.top, 16)
         return toggle
     }
-    func saveTimer(title: String, totalHours: Int, totalMinutes: Int, totalSeconds: Int, isStepped: Bool, pauseBetweenSteps: Bool, isFavorite: Bool, repeatTimer:Bool){
+
+    func saveTimer(title: String, totalHours: Int, totalMinutes: Int, totalSeconds: Int, isStepped: Bool, pauseBetweenSteps: Bool, isFavorite: Bool, repeatTimer:Bool) {
         timer.title = title
         timer.totalHours = totalHours
         timer.totalMinutes = totalMinutes
@@ -192,6 +193,6 @@ struct CriarTimer: View {
 
 struct CriarTimer_Previews: PreviewProvider {
     static var previews: some View {
-        CriarTimer(timer: TimerModel(title: "timer", stepTitle: "passo único", totalHours: 0, totalMinutes: 0, totalSeconds: 0, steps: [], currentStep: 0, totalSteps: 0, isStepped: false, pauseBetweenSteps: false, isFavorite: false, repeatTimer: false))
+        CriarTimer()
     }
 }
