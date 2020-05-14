@@ -10,35 +10,49 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var showingDetail = false
+    @State var addTimer = false
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button(action: {
-                    
-                    self.showingDetail.toggle()
-                }) {
-                    Image(uiImage: #imageLiteral(resourceName: "add"))
+            ZStack {
+
+                Color("mainColor")
+                    .edgesIgnoringSafeArea(.all)
+
+                HStack {
+
+                    Spacer()
+
+                    VStack {
+
+                        Button(action: {
+                            self.addTimer.toggle()
+                        }) {
+                            Image(uiImage: #imageLiteral(resourceName: "add"))
+                        }
+                        .sheet(isPresented: $addTimer) {
+                            CriarTimer()
+                        }
+                        .padding(.trailing)
+                        .foregroundColor(Color("secondColor"))
+
+                        Spacer()
+                    }
+
                 }
-                .sheet(isPresented: $showingDetail) {
-                    CriarTimer()
+
+                HStack {
+
+                    Text("Toque no \"+\" e adcione um timer")
+                        .modifier(TextCustomView(defaultFont: .warningMessage))
+
+                    Spacer()
                 }
+                .padding(.leading)
                 .padding(.trailing)
-                .foregroundColor(Color("secondColor"))
+
             }
-            Spacer()
-            HStack {
-                Text("Toque no '+' e adcione um timer")
-                    .padding(.leading)
-                    .padding(.bottom, 40)
-                    .modifier(TextCustomView(defaultFont: .warningMessage))
-                Spacer()
-            }
-            Spacer()
         }
-        .background(Color("mainColor").edgesIgnoringSafeArea(.top).edgesIgnoringSafeArea(.bottom))
     }
 }
 

@@ -17,6 +17,7 @@
 		0C6B004C246C645600B2AEE7 /* CriarTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B004B246C645600B2AEE7 /* CriarTimer.swift */; };
 		0C6B004E246C677100B2AEE7 /* CelulaTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B004D246C677000B2AEE7 /* CelulaTimer.swift */; };
 		0C6B0053246C68EB00B2AEE7 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B0052246C68EB00B2AEE7 /* TimerModel.swift */; };
+		0CBBAB90246D0859002896E5 /* PickerCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBBAB8F246D0859002896E5 /* PickerCustomView.swift */; };
 		BCF5414F246C84350045DC97 /* TextCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF5414E246C84350045DC97 /* TextCustomView.swift */; };
 		BCF54187246C8C9E0045DC97 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCF54175246C8C9C0045DC97 /* SF-Pro-Display-Black.otf */; };
 		BCF54188246C8C9E0045DC97 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCF54176246C8C9C0045DC97 /* SF-Pro-Display-BoldItalic.otf */; };
@@ -51,6 +52,7 @@
 		0C6B004B246C645600B2AEE7 /* CriarTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTimer.swift; sourceTree = "<group>"; };
 		0C6B004D246C677000B2AEE7 /* CelulaTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelulaTimer.swift; sourceTree = "<group>"; };
 		0C6B0052246C68EB00B2AEE7 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		0CBBAB8F246D0859002896E5 /* PickerCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCustomView.swift; sourceTree = "<group>"; };
 		BCF5414E246C84350045DC97 /* TextCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCustomView.swift; sourceTree = "<group>"; };
 		BCF54175246C8C9C0045DC97 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		BCF54176246C8C9C0045DC97 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				0C6B0052246C68EB00B2AEE7 /* TimerModel.swift */,
 				BCF5414E246C84350045DC97 /* TextCustomView.swift */,
+				0CBBAB8F246D0859002896E5 /* PickerCustomView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				0C6B003C246C593500B2AEE7 /* ContentView.swift in Sources */,
 				0C6B0037246C593500B2AEE7 /* SceneDelegate.swift in Sources */,
 				0C6B0053246C68EB00B2AEE7 /* TimerModel.swift in Sources */,
+				0CBBAB90246D0859002896E5 /* PickerCustomView.swift in Sources */,
 				0C6B004C246C645600B2AEE7 /* CriarTimer.swift in Sources */,
 				0C6B004E246C677100B2AEE7 /* CelulaTimer.swift in Sources */,
 			);

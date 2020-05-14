@@ -11,34 +11,48 @@ import SwiftUI
 struct CelulaTimer: View {
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Timer")
-                    .modifier(TextCustomView(defaultFont: .titleCell))
-                Spacer()
-                Text("04:20:30")
-                    .modifier(TextCustomView(defaultFont: .totalTimerCell))
-            }
-            
-            HStack {
-                Text("Passo único")
-                    .modifier(TextCustomView(defaultFont: .subtitleCell))
 
-                Spacer()
-            }
+        ZStack {
 
-            HStack {
-                Text("2:15:02")
-                    .modifier(TextCustomView(defaultFont: .stepTimerCell))
-                Spacer()
+            Color("mainColor")
+
+            VStack {
+                HStack {
+
+                    Text("Timer")
+                        .modifier(TextCustomView(defaultFont: .titleCell))
+
+                    Spacer()
+
+                    Text("04:20:30")
+                        .modifier(TextCustomView(defaultFont: .totalTimerCell))
+
+                }
+
+                HStack {
+
+                    Text("Passo único")
+                        .modifier(TextCustomView(defaultFont: .subtitleCell))
+
+                    Spacer()
+
+                }
+
+                HStack {
+
+                    Text("2:15:02")
+                        .modifier(TextCustomView(defaultFont: .stepTimerCell))
+
+                    Spacer()
+
+                }
             }
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.top, 12)
+            .padding(.bottom, 12)
+
         }
-        .padding(.leading)
-        .padding(.trailing)
-        .padding(.top, 12)
-        .padding(.bottom, 12)
-        .background(Color("mainColor"))
-        
     }
 }
 

@@ -14,6 +14,8 @@ enum FontType {
     case subtitleCell
     case stepTimerCell
     case totalTimerCell
+    case textField
+    case saveButton
 }
 
 struct TextCustomView: ViewModifier {
@@ -41,6 +43,12 @@ struct TextCustomView: ViewModifier {
         case .totalTimerCell:
             fontSize = 24
             fontStyle = "SFProDisplay-Light"
+        case .textField:
+            fontSize = 24
+            fontStyle = "SFProDisplay-Ultralight"
+        case .saveButton:
+            fontSize = 24
+            fontStyle = "SFProDisplay-Regular"
         }
 
         return content
