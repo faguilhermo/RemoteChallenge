@@ -18,7 +18,9 @@ struct ContentView: View {
 
                 Color("mainColor")
                     .edgesIgnoringSafeArea(.all)
-
+                
+                 
+                
                 HStack {
 
                     Spacer()
@@ -40,17 +42,16 @@ struct ContentView: View {
                     }
 
                 }
-
+        
+                 .padding(.init(top: 50, leading: 20, bottom: 20, trailing: 20))
+                
                 HStack {
-
                     Text("Toque no \"+\" e adcione um timer")
                         .modifier(TextCustomView(defaultFont: .warningMessage))
 
                     Spacer()
                 }
-                .padding(.leading)
-                .padding(.trailing)
-
+                .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
             }
         }
     }

@@ -11,14 +11,23 @@ import SwiftUI
 struct TimerModel {
     var title: String = "Timer"
     var stepTitle: String = "Passo único"
-    var totalTime: Timer
-    var currentTime: Timer
-    var steps: [StepModel]
-    var currentStep: Int
+    var totalHours: Int = 0
+    var totalMinutes: Int = 0
+    var totalSeconds: Int = 0
+    var steps: [StepModel] = []
+    var currentStep: Int = 0
+    var totalSteps: Int = 1
+    var isStepped: Bool = false
+    var pauseBetweenSteps: Bool = false
+    var isFavorite: Bool = false
+    var repeatTimer: Bool = false
+    
 }
 
 struct StepModel {
     var stepTitle: String
-    var stepTime: Timer
+    var stepHours: Int
+    var stepMinutes: Int
+    var stepSeconds: Int
 }
 

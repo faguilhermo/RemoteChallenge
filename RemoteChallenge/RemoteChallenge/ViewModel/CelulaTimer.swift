@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CelulaTimer: View {
     
+    var timerInfo: TimerModel
+    
     var body: some View {
 
         ZStack {
@@ -47,18 +49,15 @@ struct CelulaTimer: View {
 
                 }
             }
-            .padding(.leading)
-            .padding(.trailing)
-            .padding(.top, 12)
-            .padding(.bottom, 12)
+            .padding(.init(top: 12, leading: 20, bottom: 12, trailing: 20))
 
         }
     }
 }
 
-struct CelulaTimer_Previews: PreviewProvider {
-    static var previews: some View {
-        CelulaTimer()
-            .previewLayout(.fixed(width: 375, height: 168))
-    }
-}
+//struct CelulaTimer_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CelulaTimer()
+//            .previewLayout(.fixed(width: 375, height: 168))
+//    }
+//}

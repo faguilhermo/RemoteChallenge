@@ -21,7 +21,10 @@ struct CriarTimer: View {
     @State private var favTimer = false
     @State private var stepTimer = false
     @State private var pauseBetweenSteps = false
-
+    
+    
+    @ObservedObject var timer = TimerModel()
+    
     private let hours = [Int](0...24)
     private let minutes = [Int](0...60)
     private let seconds = [Int](0...60)
@@ -131,11 +134,12 @@ struct CriarTimer: View {
                             .foregroundColor(Color("saveButtonTitleColor"))
                             .modifier(TextCustomView(defaultFont: .saveButton))
                     }
-                    .opacity(0.95)
+                    .opacity(0.80)
                     .disabled(true)
                 } else {
                     Button(action: {
                         // TODO
+                        self.saveTimer(title: self.timerTitle, totalHours: self.hourSelection, totalMinutes: self.minuteSelection, totalSeconds: self.secondSelection, isStepped: self.stepTimer, pauseBetweenSteps: self.pauseBetweenSteps, isFavorite: self.favTimer, repeatTimer: self.repeatTimer)
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         ZStack {
@@ -143,13 +147,16 @@ struct CriarTimer: View {
                                 .frame(width: UIScreen.main.bounds.width-40, height: 67)
                                 .cornerRadius(33.5)
                                 .foregroundColor(Color("saveButtonColor"))
+                            
                             Text("Salvar")
                                 .foregroundColor(Color("saveButtonTitleColor"))
                                 .modifier(TextCustomView(defaultFont: .saveButton))
                         }
-                    }
+                    
+                    } 
                 }
             }
+            .padding(.bottom)
         }
     }
 
@@ -171,10 +178,20 @@ struct CriarTimer: View {
         .padding(.top, 16)
         return toggle
     }
+    func saveTimer(title: String, totalHours: Int, totalMinutes: Int, totalSeconds: Int, isStepped: Bool, pauseBetweenSteps: Bool, isFavorite: Bool, repeatTimer:Bool){
+        timer.title = title
+        timer.totalHours = totalHours
+        timer.totalMinutes = totalMinutes
+        timer.totalSeconds = totalSeconds
+        timer.isStepped = isStepped
+        timer.pauseBetweenSteps = pauseBetweenSteps
+        timer.isFavorite = isFavorite
+        timer.repeatTimer = repeatTimer
+    }
 }
 
 struct CriarTimer_Previews: PreviewProvider {
     static var previews: some View {
-        CriarTimer()
+        CriarTimer(timer: TimerModel(title: "timer", stepTitle: "passo único", totalHours: 0, totalMinutes: 0, totalSeconds: 0, steps: [], currentStep: 0, totalSteps: 0, isStepped: false, pauseBetweenSteps: false, isFavorite: false, repeatTimer: false))
     }
 }

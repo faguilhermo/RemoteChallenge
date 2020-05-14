@@ -37,6 +37,7 @@
 		BCF54196246C8C9E0045DC97 /* SF-Pro-Display-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCF54184246C8C9D0045DC97 /* SF-Pro-Display-ThinItalic.otf */; };
 		BCF54197246C8C9E0045DC97 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCF54185246C8C9D0045DC97 /* SF-Pro-Display-Medium.otf */; };
 		BCF54198246C8C9E0045DC97 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCF54186246C8C9E0045DC97 /* SF-Pro-Display-Light.otf */; };
+		E318BEAF246DB06C006E9725 /* TimerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318BEAE246DB06C006E9725 /* TimerPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		BCF54184246C8C9D0045DC97 /* SF-Pro-Display-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-ThinItalic.otf"; sourceTree = "<group>"; };
 		BCF54185246C8C9D0045DC97 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		BCF54186246C8C9E0045DC97 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		E318BEAE246DB06C006E9725 /* TimerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				0C6B003B246C593500B2AEE7 /* ContentView.swift */,
 				0C6B004B246C645600B2AEE7 /* CriarTimer.swift */,
+				E318BEAB246DB013006E9725 /* Reusable Views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +180,14 @@
 				BCF5417C246C8C9C0045DC97 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E318BEAB246DB013006E9725 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				E318BEAE246DB06C006E9725 /* TimerPicker.swift */,
+			);
+			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 				0C6B0037246C593500B2AEE7 /* SceneDelegate.swift in Sources */,
 				0C6B0053246C68EB00B2AEE7 /* TimerModel.swift in Sources */,
 				0CBBAB90246D0859002896E5 /* PickerCustomView.swift in Sources */,
+				E318BEAF246DB06C006E9725 /* TimerPicker.swift in Sources */,
 				0C6B004C246C645600B2AEE7 /* CriarTimer.swift in Sources */,
 				0C6B004E246C677100B2AEE7 /* CelulaTimer.swift in Sources */,
 			);
