@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CelulaTimer: View {
     
-    var timerInfo: TimerModel
+    @State var timerInfo: TimerModel
     
     var body: some View {
 
@@ -26,7 +26,7 @@ struct CelulaTimer: View {
 
                     Spacer()
 
-                    Text("04:20:30")
+                    Text("4:20:30")
                         .modifier(TextCustomView(defaultFont: .totalTimerCell))
 
                 }

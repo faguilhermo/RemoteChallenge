@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @State var addTimer = false
 
+    @State var tiraIsso: TimerModel
+
     var body: some View {
         VStack {
             ZStack {
@@ -31,7 +33,7 @@ struct ContentView: View {
                             Image(uiImage: #imageLiteral(resourceName: "add"))
                         }
                         .sheet(isPresented: $addTimer) {
-                            CriarTimer()
+                            CriarTimer(timer: self.$tiraIsso)
                         }
                         .padding(.trailing)
                         .foregroundColor(Color("secondColor"))
@@ -56,8 +58,8 @@ struct ContentView: View {
 
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

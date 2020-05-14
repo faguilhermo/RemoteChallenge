@@ -21,10 +21,9 @@ struct CriarTimer: View {
     @State private var favTimer = false
     @State private var stepTimer = false
     @State private var pauseBetweenSteps = false
-    
-    
-    @State var timer = TimerModel()
-    
+
+    @Binding var timer: TimerModel
+
     private let hours = [Int](0...24)
     private let minutes = [Int](0...60)
     private let seconds = [Int](0...60)
@@ -191,8 +190,8 @@ struct CriarTimer: View {
     }
 }
 
-struct CriarTimer_Previews: PreviewProvider {
-    static var previews: some View {
-        CriarTimer()
-    }
-}
+//struct CriarTimer_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CriarTimer()
+//    }
+//}
