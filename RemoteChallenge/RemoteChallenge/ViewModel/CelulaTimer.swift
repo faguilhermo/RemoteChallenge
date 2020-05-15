@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CelulaTimer: View {
     
-    @State var timerInfo: TimerModel
+    @State var timerInfo: TimerModel = TimerModel()
     
     var body: some View {
 
@@ -21,19 +21,19 @@ struct CelulaTimer: View {
             VStack {
                 HStack {
 
-                    Text("Timer")
+                    Text(timerInfo.title)
                         .modifier(TextCustomView(defaultFont: .titleCell))
 
                     Spacer()
 
-                    Text("4:20:30")
+                    Text("\(timerInfo.totalHours):\(timerInfo.totalMinutes):\(timerInfo.totalSeconds)")
                         .modifier(TextCustomView(defaultFont: .totalTimerCell))
 
                 }
 
                 HStack {
 
-                    Text("Passo único")
+                    Text(timerInfo.stepTitle)
                         .modifier(TextCustomView(defaultFont: .subtitleCell))
 
                     Spacer()
@@ -41,8 +41,9 @@ struct CelulaTimer: View {
                 }
 
                 HStack {
-
-                    Text("2:15:02")
+                    //arrumar o timer dos passos!!
+                    
+                    Text("\(timerInfo.totalHours):\(timerInfo.totalMinutes):\(timerInfo.totalSeconds)")
                         .modifier(TextCustomView(defaultFont: .stepTimerCell))
 
                     Spacer()
@@ -53,6 +54,12 @@ struct CelulaTimer: View {
 
         }
     }
+    
+    
+//    func teste (Parametros: TimerModel) {
+//        self.timerInfo = Parametros
+//        print(timerInfo.title)
+//    }
 }
 
 //struct CelulaTimer_Previews: PreviewProvider {

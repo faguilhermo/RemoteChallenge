@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var addTimer = false
-
-    @State var tiraIsso: TimerModel
+    @State var info: TimerModel
+    
 
     var body: some View {
         VStack {
@@ -33,7 +33,7 @@ struct ContentView: View {
                             Image(uiImage: #imageLiteral(resourceName: "add"))
                         }
                         .sheet(isPresented: $addTimer) {
-                            CriarTimer(timer: self.$tiraIsso)
+                            CriarTimer(timer: self.$info)
                         }
                         .padding(.trailing)
                         .foregroundColor(Color("secondColor"))
@@ -45,9 +45,12 @@ struct ContentView: View {
         
                  .padding(.init(top: 50, leading: 20, bottom: 20, trailing: 20))
                 
+                
                 HStack {
-                    Text("Toque no \"+\" para adicionar um timer.")
-                        .modifier(TextCustomView(defaultFont: .warningMessage))
+//                    Text("Toque no \"+\" para adicionar um timer.")
+//                        .modifier(TextCustomView(defaultFont: .warningMessage))
+                    CelulaTimer()
+                        .frame(height: 168)
 
                     Spacer()
                 }
