@@ -17,7 +17,6 @@ struct CriarTimer: View {
     @State private var minuteSelection = 0
     @State private var secondSelection = 0
     
-    var celulaTimer: CelulaTimer = CelulaTimer()
     
     @State private var repeatTimer = false
     @State private var favTimer = false
@@ -148,7 +147,7 @@ struct CriarTimer: View {
                         
                         
                         
-//                        self.celulaTimer.teste(Parametros: self.timer)
+//                      self.celulaTimer.teste(parametros: self.timer)
                         
                         // passar o save timer pra classe Celula
                         self.presentationMode.wrappedValue.dismiss()
@@ -204,6 +203,6 @@ struct CriarTimer: View {
 
 //struct CriarTimer_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CriarTimer(timer: TimerModel())
+//        CriarTimer()
 //    }
 //}

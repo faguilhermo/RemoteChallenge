@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CelulaTimer: View {
     
-    @State var timerInfo: TimerModel = TimerModel()
+    var timerInfo: TimerModel
     
     var body: some View {
 
@@ -56,9 +56,10 @@ struct CelulaTimer: View {
     }
     
     
-//    func teste (Parametros: TimerModel) {
-//        self.timerInfo = Parametros
-//        print(timerInfo.title)
+//    func teste (parametros: TimerModel) {
+//        timerInfo.title = parametros.title
+//        timerInfo.totalHours = parametros.totalHours
+//
 //    }
 }
 
