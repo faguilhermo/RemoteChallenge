@@ -20,9 +20,12 @@ struct AddNewTimerView: View {
     @State var second: Int
 
     @State var repeatTimer: Bool = false
+    @State var timesToRepeat: Int = 0
 
     var addTimer: (TimerModel) -> ()
     var id: Int
+
+    private let numbersToRepeat = [Int](2...100)
 
     var body: some View {
         ZStack {
@@ -30,35 +33,48 @@ struct AddNewTimerView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack (alignment: .leading, spacing: 0) {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(uiImage: #imageLiteral(resourceName: "add"))
-                            .foregroundColor(Color("Secondary-Color"))
-                            .rotationEffect(.degrees(45))
+                Group {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(uiImage: #imageLiteral(resourceName: "add"))
+                                .foregroundColor(Color("Secondary-Color"))
+                                .rotationEffect(.degrees(45))
+                        }
+                    }
+
+                    Text("Nome (opcional)")
+                        .modifier(TextCustomModifier(fontType: .titleCell))
+                        .padding(.top)
+                    TextField("Titulo", text: $title)
+                        .modifier(TextCustomModifier(fontType: .textField))
+                    Text("Subtítulo (opcional)")
+                        .modifier(TextCustomModifier(fontType: .titleCell))
+                        .padding(.top, 16)
+                    TextField("Subtitulo", text: $subtitle)
+                        .modifier(TextCustomModifier(fontType: .textField))
+                    Text("Tempo do timer")
+                        .modifier(TextCustomModifier(fontType: .titleCell))
+                        .padding(.top, 16)
+                    TimerPicker(hour: $hour, minute: $minute, second: $second)
+
+                    doToggle($repeatTimer, title: "Repetir timer")
+                    if self.repeatTimer {
+                        Picker(selection: $timesToRepeat, label: Text("")) {
+                            ForEach(0..<numbersToRepeat.count) { index in
+                                Text("\(self.numbersToRepeat[index])").tag(index)
+                            }
+                        }
+                        .labelsHidden()
+                        .frame(width: UIScreen.main.bounds.width-40, height: 100)
+                        .clipped()
                     }
                 }
 
-                Text("Nome (opcional)")
-                    .modifier(TextCustomModifier(fontType: .titleCell))
-                    .padding(.top)
-                TextField("Titulo", text: $title)
-                    .modifier(TextCustomModifier(fontType: .textField))
-                Text("Subtítulo (opcional)")
-                    .modifier(TextCustomModifier(fontType: .titleCell))
-                    .padding(.top, 16)
-                TextField("Subtitulo", text: $subtitle)
-                    .modifier(TextCustomModifier(fontType: .textField))
-                Text("Tempo do timer")
-                    .modifier(TextCustomModifier(fontType: .titleCell))
-                    .padding(.top, 16)
-                TimerPicker(hour: $hour, minute: $minute, second: $second)
-
-                doToggle($repeatTimer, title: "Repetir timer")
-
                 Spacer()
+
                 HStack {
                     if self.hour == 0 && self.minute == 0 && self.second == 0 {
                         VStack (alignment: .leading) {
@@ -101,7 +117,7 @@ struct AddNewTimerView: View {
             let treatedTime = TimeViewModel().formatTime(hours: treatedHours, minutes: treatedMinutes, seconds: treatedSeconds)
             let treatedTitle = self.title == "" ? "Timer" : self.title
             let treatedSubtitle = self.subtitle == "" ? "Passo único" : self.subtitle
-            self.addTimer(.init(id: self.id, title: treatedTitle, subtitle: treatedSubtitle, timer: treatedTime,  totalTime: totalInSeconds, repeatTimer: self.repeatTimer))
+            self.addTimer(.init(id: self.id, title: treatedTitle, subtitle: treatedSubtitle, timer: treatedTime,  totalTime: totalInSeconds, repeatTimer: self.repeatTimer, repetitionNumber: self.timesToRepeat+2))
             self.presentationMode.wrappedValue.dismiss()
         }) {
             ZStack {

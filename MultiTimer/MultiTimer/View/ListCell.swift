@@ -27,14 +27,16 @@ struct ListCell: View {
     @State var timerFinished = false
     @State var start = true
     let repeatTimer: Bool
+    @State var repeated = 0
+
     
-    func notify(tempoTotal: Double) {
+    func notify(tempoTotal: Double, id: String) {
         let content = UNMutableNotificationContent()
         content.title = "Chegamos a estaca zero!"
         content.body = "A contagem do timer \(timer.subtitle) chegou a zero"
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "timerOverSound"))
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tempoTotal, repeats: false)
-        let req = UNNotificationRequest(identifier: String(timer.id), content: content, trigger: trigger)
+        let req = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
     }
     
@@ -71,10 +73,28 @@ struct ListCell: View {
                     }
                     .onTapGesture {
                         if !self.timerFinished {
-                            if self.start == true {
-                                self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id)])
+                            if self.start {
+                                if self.timer.repetitionNumber > 0 {
+                                    for i in 1...(self.timer.repetitionNumber) {
+                                        self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id*1000+i)])
+                                    }
+                                } else {
+                                    self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id)])
+                                }
                             } else {
-                                self.notify(tempoTotal: Double(self.totalTime))
+
+                                if self.timer.repetitionNumber > 0 {
+                                    var repetition: Double = -1
+                                    if self.repeated <= self.timer.repetitionNumber {
+                                    for i in 1...(self.timer.repetitionNumber-self.repeated) {
+                                        self.notify(tempoTotal: Double(self.totalTime+i)+repetition, id: String(self.timer.id*1000+i))
+                                        repetition += Double(self.timer.totalTime)
+                                    }
+                                    }
+                                } else {
+                                    self.notify(tempoTotal: Double(self.timer.totalTime), id: String(self.timer.id))
+                                }
+
                             }
                             self.start.toggle()
                         }
@@ -84,7 +104,7 @@ struct ListCell: View {
                     
                     //botao de reload timer
                     Button(action: {}) {
-                        if self.timerFinished{
+                        if self.timerFinished {
                             Image(uiImage: #imageLiteral(resourceName: "restart")).foregroundColor(Color("Secondary-Color"))
                         } else {
                             Image(uiImage: #imageLiteral(resourceName: "restart")).foregroundColor(Color("Secondary-Color")).disabled(true).opacity(0.5)
@@ -94,8 +114,17 @@ struct ListCell: View {
                     .padding(.trailing)
                     .onTapGesture {
                         if self.timerFinished {
-                            self.notify(tempoTotal: Double(self.timer.totalTime))
+                            self.repeated = 0
                             self.totalTime = self.timer.totalTime
+                            if self.timer.repetitionNumber > 0 {
+                                var repetition: Double = -1
+                                for i in 1...(self.timer.repetitionNumber-self.repeated) {
+                                    self.notify(tempoTotal: Double(self.totalTime+i)+repetition, id: String(self.timer.id*1000+i))
+                                    repetition += Double(self.timer.totalTime)
+                                }
+                            } else {
+                                self.notify(tempoTotal: Double(self.timer.totalTime), id: String(self.timer.id))
+                            }
                             self.start = true
                             self.timerFinished = false
                         }
@@ -109,13 +138,18 @@ struct ListCell: View {
                         self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id)])
                         self.start = false
                         self.didDelete(self.timer)
+                        if self.timer.repetitionNumber > 0 {
+                            for i in 1...self.timer.repetitionNumber {
+                                self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id*1000+i)])
+                            }
+                        }
                     }
                 }
             }
             .onAppear(perform: {
-                self.notify(tempoTotal: Double(self.timer.totalTime))
+
                 self.totalTime = self.timer.totalTime
-                self.start = true
+                self.start = false
             })
                 
                 //quando o app vai pra background
@@ -152,12 +186,12 @@ struct ListCell: View {
                     if self.totalTime > 0 {
                         self.totalTime -= 1
                     } else {
-                        if !self.repeatTimer {    //Trata o repeatTimer
+                        if !self.repeatTimer || self.repeated == self.timer.repetitionNumber-1 {
                             self.timerFinished = true
                         } else {
-                            self.totalTime = self.timer.totalTime
-                            self.start = true
-                            self.notify(tempoTotal: Double(self.timer.totalTime))
+                                self.repeated += 1
+                                self.totalTime = self.timer.totalTime
+                                self.start = true
                         }
                     }
                 }
