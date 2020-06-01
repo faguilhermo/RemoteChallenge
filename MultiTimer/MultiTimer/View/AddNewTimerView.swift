@@ -56,7 +56,7 @@ struct AddNewTimerView: View {
                     Text("Subtítulo (opcional)")
                         .modifier(TextCustomModifier(fontType: .titleCell))
                         .padding(.top, 16)
-                    TextField("Subtitulo", text: $subtitle) 
+                    TextField("Subtitulo", text: $subtitle)
                         .modifier(TextCustomModifier(fontType: .textField))
                     Text("Tempo do timer")
                         .modifier(TextCustomModifier(fontType: .titleCell))

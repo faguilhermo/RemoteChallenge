@@ -12,7 +12,7 @@ struct ContentView: View {
 
     @State var timers: [TimerModel] = []
     @State var isAddNewTimerPresented = false
-    @State private var selection: Set<TimerModel> = []
+//    @State private var selection: Set<TimerModel> = []
 
     var body: some View {
         ZStack {
@@ -35,10 +35,10 @@ struct ContentView: View {
 
                 List {
                     ForEach(timers, id: \.id) { timer in
-                        ListCell(isExpended: self.selection.contains(timer), timer: timer, didDelete: { _ in
+                        ListCell(timer: timer, didDelete: { _ in
                             self.timers.removeAll(where: {$0.id == timer.id})
                         }, totalTime: timer.totalTime, repeatTimer: timer.repeatTimer)
-                            .onTapGesture { self.selectDeselect(timer) }
+//                            .onTapGesture { self.selectDeselect(timer) }
                     }
                 }
             }
@@ -50,11 +50,11 @@ struct ContentView: View {
         }
     }
 
-    private func selectDeselect(_ timer: TimerModel) {
-        if selection.contains(timer) {
-            selection.remove(timer)
-        } else {
-            selection.insert(timer)
-        }
-    }
+//    private func selectDeselect(_ timer: TimerModel) {
+//        if selection.contains(timer) {
+//            selection.remove(timer)
+//        } else {
+//            selection.insert(timer)
+//        }
+//    }
 }

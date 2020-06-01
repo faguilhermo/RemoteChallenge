@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C35413424858D7700A03222 /* UIAplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35413324858D7700A03222 /* UIAplicationExtension.swift */; };
 		0C6D464C2474605B00E839D3 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D46462474605B00E839D3 /* SF-Pro-Display-Ultralight.otf */; };
 		0C6D464D2474605B00E839D3 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D46472474605B00E839D3 /* SF-Pro-Display-Thin.otf */; };
 		0C6D464E2474605B00E839D3 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D46482474605B00E839D3 /* SF-Pro-Display-Regular.otf */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C35413324858D7700A03222 /* UIAplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplicationExtension.swift; sourceTree = "<group>"; };
 		0C6D46462474605B00E839D3 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		0C6D46472474605B00E839D3 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0C6D46482474605B00E839D3 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C35413224858D1900A03222 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C35413324858D7700A03222 /* UIAplicationExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0C6D464524745F6B00E839D3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 				0C6D4654247466B800E839D3 /* Model */,
 				0C6D4653247466B100E839D3 /* View */,
 				0C6D4652247466A600E839D3 /* ViewModel */,
+				0C35413224858D1900A03222 /* Extensions */,
 				0C8F0E082472D7120072B9AC /* Assets.xcassets */,
 				0C8F0E0D2472D7120072B9AC /* LaunchScreen.storyboard */,
 				0C8F0E102472D7120072B9AC /* Info.plist */,
@@ -239,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C35413424858D7700A03222 /* UIAplicationExtension.swift in Sources */,
 				0C6D46602474BBAB00E839D3 /* TextCustomModifier.swift in Sources */,
 				0C8F0E002472D70D0072B9AC /* AppDelegate.swift in Sources */,
 				0C8F0E052472D70D0072B9AC /* MultiTimer.xcdatamodeld in Sources */,

@@ -4,7 +4,7 @@ import UserNotifications
 struct ListCell: View {
 
 
-    let isExpended: Bool
+//    let isExpended: Bool
     var timer: TimerModel
     var runTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var didDelete: (TimerModel) -> ()
@@ -54,7 +54,7 @@ struct ListCell: View {
                 }
             }
             HStack {
-                if isExpended {
+//                if isExpended {
                     Button(action: {}) {
                         if self.timerFinished || self.totalTime == 0 {
                             Image(uiImage: #imageLiteral(resourceName: "play")).foregroundColor(Color("Secondary-Color")).disabled(true).opacity(0.5)
@@ -195,7 +195,6 @@ struct ListCell: View {
                             self.start = true
                         }
                     }
-                }
             }
         }
         .contentShape(Rectangle())
@@ -204,10 +203,4 @@ struct ListCell: View {
 
     }
 
-}
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
 }
