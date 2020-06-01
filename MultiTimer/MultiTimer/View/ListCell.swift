@@ -1,35 +1,27 @@
-//
-//  ListCell.swift
-//  MultiTimer
-//
-//  Created by Fabrício Guilhermo on 19/05/20.
-//  Copyright © 2020 Fabrício Guilhermo. All rights reserved.
-//
-
 import SwiftUI
 import UserNotifications
 
 struct ListCell: View {
-    
-    
+
+
     let isExpended: Bool
     var timer: TimerModel
     var runTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var didDelete: (TimerModel) -> ()
     let calendar = Calendar.current
-    
+
     @State var timeBeforeEnterBackground = 0
     @State var timeComeInForeground = 0
-    
+
     let center = UNUserNotificationCenter.current()
-    
+
     @State var totalTime: Int
     @State var timerFinished = false
     @State var start = true
     let repeatTimer: Bool
     @State var repeated = 0
 
-    
+
     func notify(tempoTotal: Double, id: String) {
         let content = UNMutableNotificationContent()
         content.title = "Chegamos a estaca zero!"
@@ -39,16 +31,16 @@ struct ListCell: View {
         let req = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             VStack (alignment: .leading) {
                 HStack {
                     Text(timer.title)
                         .modifier(TextCustomModifier(fontType: .titleCell))
-                    
+
                     Spacer()
-                    
+
                     Text(TimeViewModel().formatTime(hours: TimeViewModel().secondsInHours(seconds: timer.totalTime), minutes: TimeViewModel().secondsInMinutes(seconds: timer.totalTime), seconds: TimeViewModel().seconds(timer.totalTime)))
                         .modifier(TextCustomModifier(fontType: .totalTimerCell))
                 }
@@ -64,7 +56,7 @@ struct ListCell: View {
             HStack {
                 if isExpended {
                     Button(action: {}) {
-                        if self.timerFinished {
+                        if self.timerFinished || self.totalTime == 0 {
                             Image(uiImage: #imageLiteral(resourceName: "play")).foregroundColor(Color("Secondary-Color")).disabled(true).opacity(0.5)
                         } else {
                             self.start ? Image(uiImage: #imageLiteral(resourceName: "pause")).foregroundColor(Color("Secondary-Color")) :
@@ -73,7 +65,7 @@ struct ListCell: View {
                     }
                     .onTapGesture {
                         if !self.timerFinished {
-                            if self.start {
+                            if self.start  {
                                 if self.timer.repetitionNumber > 0 {
                                     for i in 1...(self.timer.repetitionNumber) {
                                         self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id*1000+i)])
@@ -99,9 +91,9 @@ struct ListCell: View {
                             self.start.toggle()
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     //botao de reload timer
                     Button(action: {}) {
                         if self.timerFinished {
@@ -109,7 +101,7 @@ struct ListCell: View {
                         } else {
                             Image(uiImage: #imageLiteral(resourceName: "restart")).foregroundColor(Color("Secondary-Color")).disabled(true).opacity(0.5)
                         }
-                        
+
                     }
                     .padding(.trailing)
                     .onTapGesture {
@@ -129,7 +121,7 @@ struct ListCell: View {
                             self.timerFinished = false
                         }
                     }
-                    
+
                     //botao de delete cell eu sabia q ia precisar!
                     Button(action: {}) {
                         Image(uiImage: #imageLiteral(resourceName: "garbage")).foregroundColor(Color("Secondary-Color"))
@@ -151,7 +143,7 @@ struct ListCell: View {
                 self.totalTime = self.timer.totalTime
                 self.start = false
             })
-                
+
                 //quando o app vai pra background
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     self.timeBeforeEnterBackground = 0
