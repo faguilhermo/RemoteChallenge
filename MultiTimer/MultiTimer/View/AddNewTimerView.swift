@@ -26,7 +26,7 @@ struct AddNewTimerView: View {
     var addTimer: (TimerModel) -> ()
     var id = Int.random(in: 0...100000)
 
-    private let numbersToRepeat = [Int](2...100)
+    private let numbersToRepeat = [Int](2...10)
 
     var body: some View {
         ZStack {

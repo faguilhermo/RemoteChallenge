@@ -48,9 +48,15 @@ struct ListCell: View {
                     Text(timer.subtitle)
                         .modifier(TextCustomModifier(fontType: .subtitleCell))
                 }
-                HStack {
+                HStack (alignment: .bottom) {
                     Text(TimeViewModel().formatTime(hours: TimeViewModel().secondsInHours(seconds: totalTime), minutes: TimeViewModel().secondsInMinutes(seconds: totalTime), seconds: TimeViewModel().seconds(totalTime)))
                         .modifier(TextCustomModifier(fontType: .stepTimerCell))
+                    Spacer()
+                    if timer.repetitionNumber >= 2 && timer.repeatTimer {
+                    Text("(\(repeated+1)/\(timer.repetitionNumber))")
+                        .modifier(TextCustomModifier(fontType: .subtitleCell))
+                        .padding(.bottom)
+                    }
                 }
             }
             HStack {
@@ -79,7 +85,7 @@ struct ListCell: View {
 
                             } else if self.timerFinished || self.totalTime != 0 {
 
-                                if self.timer.repetitionNumber > 0 {
+                                if self.timer.repeatTimer {
                                     var repetition: Double = -1
                                     if self.repeated <= self.timer.repetitionNumber {
                                         for i in 1...(self.timer.repetitionNumber-self.repeated) {
@@ -143,6 +149,8 @@ struct ListCell: View {
                         }
                     }
                 }
+            Divider()
+                .padding(.top, 40)
             }
             .onAppear(perform: {
 
