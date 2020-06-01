@@ -86,10 +86,10 @@ struct ListCell: View {
                                 if self.timer.repetitionNumber > 0 {
                                     var repetition: Double = -1
                                     if self.repeated <= self.timer.repetitionNumber {
-                                    for i in 1...(self.timer.repetitionNumber-self.repeated) {
-                                        self.notify(tempoTotal: Double(self.totalTime+i)+repetition, id: String(self.timer.id*1000+i))
-                                        repetition += Double(self.timer.totalTime)
-                                    }
+                                        for i in 1...(self.timer.repetitionNumber-self.repeated) {
+                                            self.notify(tempoTotal: Double(self.totalTime+i)+repetition, id: String(self.timer.id*1000+i))
+                                            repetition += Double(self.timer.totalTime)
+                                        }
                                     }
                                 } else {
                                     self.notify(tempoTotal: Double(self.timer.totalTime), id: String(self.timer.id))
@@ -167,17 +167,19 @@ struct ListCell: View {
                 let currentSecond = self.calendar.component(.second, from: Date())
                 self.timeComeInForeground = currentHourInSeconds + currentMinuteInSeconds + currentSecond
                 let timeAway = self.timeComeInForeground - self.timeBeforeEnterBackground // Guilherme Enes
-                self.totalTime -= timeAway
-                
-                //TRATAR AQUI!
-                if self.repeatTimer {
-                    let repeatedIn = timeAway%self.totalTime
-                    self.totalTime = self.totalTime - (self.totalTime - repeatedIn)
-                } else {
-                    if self.totalTime < 0 {
-                        self.totalTime = 0
-                        self.start = false
-                        self.timerFinished = true
+                if self.start {
+                    self.totalTime -= timeAway
+
+                    //TRATAR AQUI!
+                    if self.repeatTimer {
+                        let repeatedIn = timeAway%self.totalTime
+                        self.totalTime = self.totalTime - (self.totalTime - repeatedIn)
+                    } else {
+                        if self.totalTime < 0 {
+                            self.totalTime = 0
+                            self.start = false
+                            self.timerFinished = true
+                        }
                     }
                 }
             }
@@ -189,9 +191,9 @@ struct ListCell: View {
                         if !self.repeatTimer || self.repeated == self.timer.repetitionNumber-1 {
                             self.timerFinished = true
                         } else {
-                                self.repeated += 1
-                                self.totalTime = self.timer.totalTime
-                                self.start = true
+                            self.repeated += 1
+                            self.totalTime = self.timer.totalTime
+                            self.start = true
                         }
                     }
                 }

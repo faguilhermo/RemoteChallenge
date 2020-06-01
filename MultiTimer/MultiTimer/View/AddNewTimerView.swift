@@ -23,7 +23,7 @@ struct AddNewTimerView: View {
     @State var timesToRepeat: Int = 0
 
     var addTimer: (TimerModel) -> ()
-    var id: Int
+    var id = Int.random(in: 0...Int.max)
 
     private let numbersToRepeat = [Int](2...100)
 

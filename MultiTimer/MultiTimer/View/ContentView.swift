@@ -30,7 +30,7 @@ struct ContentView: View {
                 }.sheet(isPresented: $isAddNewTimerPresented, content: {
                     AddNewTimerView(hour: 0, minute: 0, second: 0, addTimer: { timer in
                         self.timers.append(timer)
-                    }, id: self.timers.count)
+                    })
                 })
 
                 List {
