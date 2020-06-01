@@ -62,6 +62,9 @@ struct ListCell: View {
                             self.start ? Image(uiImage: #imageLiteral(resourceName: "pause")).foregroundColor(Color("Secondary-Color")) :
                                 Image(uiImage: #imageLiteral(resourceName: "play")).foregroundColor(Color("Secondary-Color"))
                         }
+                        if self.repeatTimer && self.totalTime == 0 {
+
+                        }
                     }
                     .onTapGesture {
                         if !self.timerFinished {
@@ -73,7 +76,8 @@ struct ListCell: View {
                                 } else {
                                     self.center.removePendingNotificationRequests(withIdentifiers: [String(self.timer.id)])
                                 }
-                            } else {
+
+                            } else if self.timerFinished || self.totalTime != 0 {
 
                                 if self.timer.repetitionNumber > 0 {
                                     var repetition: Double = -1
@@ -86,9 +90,11 @@ struct ListCell: View {
                                 } else {
                                     self.notify(tempoTotal: Double(self.timer.totalTime), id: String(self.timer.id))
                                 }
-
                             }
-                            self.start.toggle()
+
+                            if self.totalTime != 0 {
+                                self.start.toggle()
+                            }
                         }
                     }
 
