@@ -24,8 +24,8 @@ struct ListCell: View {
 
     func notify(tempoTotal: Double, id: String) {
         let content = UNMutableNotificationContent()
-        content.title = "Chegamos a estaca zero!"
-        content.body = "A contagem do timer \(timer.subtitle) chegou a zero"
+        content.title = "\(timer.title)"
+        content.body = "A contagem do timer '\(timer.title)' chegou a zero"
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "timerOverSound"))
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tempoTotal, repeats: false)
         let req = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
