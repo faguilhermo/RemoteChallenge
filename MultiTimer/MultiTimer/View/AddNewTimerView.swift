@@ -31,6 +31,9 @@ struct AddNewTimerView: View {
         ZStack {
             Color("Main-Color")
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    self.endEditing()
+            }
 
             VStack (alignment: .leading, spacing: 0) {
                 Group {
@@ -53,7 +56,7 @@ struct AddNewTimerView: View {
                     Text("Subtítulo (opcional)")
                         .modifier(TextCustomModifier(fontType: .titleCell))
                         .padding(.top, 16)
-                    TextField("Subtitulo", text: $subtitle)
+                    TextField("Subtitulo", text: $subtitle) 
                         .modifier(TextCustomModifier(fontType: .textField))
                     Text("Tempo do timer")
                         .modifier(TextCustomModifier(fontType: .titleCell))
@@ -130,4 +133,9 @@ struct AddNewTimerView: View {
             }
         }
     }
+
+    private func endEditing() {
+        UIApplication.shared.endEditing()
+    }
+
 }

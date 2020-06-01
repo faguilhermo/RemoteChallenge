@@ -150,6 +150,7 @@ struct ListCell: View {
                 self.start = false
             })
 
+
                 //quando o app vai pra background
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     self.timeBeforeEnterBackground = 0
@@ -200,5 +201,13 @@ struct ListCell: View {
         .contentShape(Rectangle())
         .listRowBackground(Color("Main-Color"))
         .padding(.bottom, 24)
+
+    }
+
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
