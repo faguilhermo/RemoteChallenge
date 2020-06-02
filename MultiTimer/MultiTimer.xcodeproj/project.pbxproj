@@ -27,6 +27,8 @@
 		0C8F0E0C2472D7120072B9AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C8F0E0B2472D7120072B9AC /* Preview Assets.xcassets */; };
 		0C8F0E0F2472D7120072B9AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8F0E0D2472D7120072B9AC /* LaunchScreen.storyboard */; };
 		0C8F0E1724731CCD0072B9AC /* AddNewTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8F0E1624731CCD0072B9AC /* AddNewTimerView.swift */; };
+		BC7C2CFA2486C04F0028F9CE /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C2CF92486C04F0028F9CE /* StepModel.swift */; };
+		BC7C2CFC2486C3070028F9CE /* AddStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C2CFB2486C3070028F9CE /* AddStepView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		0C8F0E0E2472D7120072B9AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C8F0E102472D7120072B9AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C8F0E1624731CCD0072B9AC /* AddNewTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTimerView.swift; sourceTree = "<group>"; };
+		BC7C2CF92486C04F0028F9CE /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
+		BC7C2CFB2486C3070028F9CE /* AddStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				0C8F0E062472D70D0072B9AC /* ContentView.swift */,
 				0C8F0E1624731CCD0072B9AC /* AddNewTimerView.swift */,
 				0C6D46572474677000E839D3 /* ListCell.swift */,
+				BC7C2CFB2486C3070028F9CE /* AddStepView.swift */,
 				0C6D465C2474712500E839D3 /* Custom Modifiers */,
 				0C6D4659247469F000E839D3 /* Suporting views */,
 			);
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0C6D4655247466D500E839D3 /* TimerModel.swift */,
+				BC7C2CF92486C04F0028F9CE /* StepModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,8 +263,10 @@
 				0C8F0E072472D70D0072B9AC /* ContentView.swift in Sources */,
 				0C6D465B24746B7400E839D3 /* TimerPicker.swift in Sources */,
 				0C6D46582474677000E839D3 /* ListCell.swift in Sources */,
+				BC7C2CFA2486C04F0028F9CE /* StepModel.swift in Sources */,
 				0C6D4656247466D500E839D3 /* TimerModel.swift in Sources */,
 				0C6D465E2474758B00E839D3 /* TimeViewModel.swift in Sources */,
+				BC7C2CFC2486C3070028F9CE /* AddStepView.swift in Sources */,
 				0C8F0E1724731CCD0072B9AC /* AddNewTimerView.swift in Sources */,
 				0C8F0E022472D70D0072B9AC /* SceneDelegate.swift in Sources */,
 			);
@@ -398,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MultiTimer/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LWWH6K4TJ;
+				DEVELOPMENT_TEAM = V894BS73ZJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MultiTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -418,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MultiTimer/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LWWH6K4TJ;
+				DEVELOPMENT_TEAM = V894BS73ZJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MultiTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

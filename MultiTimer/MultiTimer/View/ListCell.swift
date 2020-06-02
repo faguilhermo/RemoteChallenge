@@ -74,9 +74,6 @@ struct ListCell: View {
                             self.start ? Image(uiImage: #imageLiteral(resourceName: "pause")).foregroundColor(Color("Secondary-Color")) :
                                 Image(uiImage: #imageLiteral(resourceName: "play")).foregroundColor(Color("Secondary-Color"))
                         }
-                        if self.repeatTimer && self.totalTime == 0 {
-
-                        }
                     }
                     .onTapGesture {
                         if !self.timerFinished {
@@ -164,7 +161,6 @@ struct ListCell: View {
                 self.start = false
             })
 
-
                 //quando o app vai pra background
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     self.timeBeforeEnterBackground = 0
@@ -214,7 +210,6 @@ struct ListCell: View {
         .contentShape(Rectangle())
         .listRowBackground(Color("Main-Color"))
         .padding(.bottom, 24)
-
     }
 
 }

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TimerModel: Identifiable, Hashable {
+    
     var id: Int
     let title: String
     let subtitle: String
@@ -16,4 +17,6 @@ struct TimerModel: Identifiable, Hashable {
     let totalTime: Int
     let repeatTimer: Bool
     let repetitionNumber: Int
+    var steps: [StepModel]
+    
 }
