@@ -15,5 +15,5 @@ struct TimerModel: Identifiable, Hashable {
     let timer: String
     let totalTime: Int
     let repeatTimer: Bool
-    let repetitionNumber: Int 
+    let repetitionNumber: Int
 }

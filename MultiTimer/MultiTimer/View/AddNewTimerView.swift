@@ -14,6 +14,7 @@ struct AddNewTimerView: View {
 
     @State var title: String = ""
     @State var subtitle: String = ""
+    @State var repetitionLabel = ""
 
     @State var hour: Int
     @State var minute: Int
@@ -23,7 +24,7 @@ struct AddNewTimerView: View {
     @State var timesToRepeat: Int = 0
 
     var addTimer: (TimerModel) -> ()
-    var id: Int
+    var id = Int.random(in: 0...100000)
 
     private let numbersToRepeat = [Int](2...10)
 
@@ -31,6 +32,9 @@ struct AddNewTimerView: View {
         ZStack {
             Color("Main-Color")
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    self.endEditing()
+            }
 
             VStack (alignment: .leading, spacing: 0) {
                 Group {
@@ -62,6 +66,9 @@ struct AddNewTimerView: View {
 
                     doToggle($repeatTimer, title: "Repetir timer")
                     if self.repeatTimer {
+                        Text("O timer irá se repetir \(timesToRepeat+2) vezes")
+                            .modifier(TextCustomModifier(fontType: .titleCell))
+                            .opacity(0.6)
                         Picker(selection: $timesToRepeat, label: Text("")) {
                             ForEach(0..<numbersToRepeat.count) { index in
                                 Text("\(self.numbersToRepeat[index])").tag(index)
@@ -93,8 +100,7 @@ struct AddNewTimerView: View {
             }.padding()
         }
         .onAppear(perform: {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert]) { (_, _) in
-            }
+            UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert]) { (_, _) in }
         })
     }
 
@@ -116,7 +122,7 @@ struct AddNewTimerView: View {
             let treatedSeconds = TimeViewModel().seconds(totalInSeconds)
             let treatedTime = TimeViewModel().formatTime(hours: treatedHours, minutes: treatedMinutes, seconds: treatedSeconds)
             let treatedTitle = self.title == "" ? "Timer" : self.title
-            let treatedSubtitle = self.subtitle == "" ? "Passo único" : self.subtitle
+            let treatedSubtitle = self.subtitle == "" ? "Etapa única" : self.subtitle
             self.addTimer(.init(id: self.id, title: treatedTitle, subtitle: treatedSubtitle, timer: treatedTime,  totalTime: totalInSeconds, repeatTimer: self.repeatTimer, repetitionNumber: self.timesToRepeat+2))
             self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -130,4 +136,9 @@ struct AddNewTimerView: View {
             }
         }
     }
+
+    private func endEditing() {
+        UIApplication.shared.endEditing()
+    }
+
 }
