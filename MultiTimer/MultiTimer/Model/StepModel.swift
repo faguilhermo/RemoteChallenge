@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StepModel: Hashable {
     let stepTitle: String
-    let stepTotalTime: Int
+    var stepTotalTime: Int
     let stepShownTime: String
     
     

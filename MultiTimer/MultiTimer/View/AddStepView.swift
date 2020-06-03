@@ -101,8 +101,6 @@ struct AddStepView: View {
         }
     }
     
-    
-    
     private func endEditing() {
         UIApplication.shared.endEditing()
     }

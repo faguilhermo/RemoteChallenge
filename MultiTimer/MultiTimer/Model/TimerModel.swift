@@ -18,5 +18,6 @@ struct TimerModel: Identifiable, Hashable {
     let repeatTimer: Bool
     let repetitionNumber: Int
     var steps: [StepModel]
+    var stepsBool: Bool
     
 }

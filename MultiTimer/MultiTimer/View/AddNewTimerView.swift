@@ -27,6 +27,7 @@ struct AddNewTimerView: View {
     
     @State var timesToRepeat: Int = 0
     
+    @State var stepsBoolean = false
     @State var steps: [StepModel] = []
     
     var addTimer: (TimerModel) -> ()
@@ -154,18 +155,20 @@ struct AddNewTimerView: View {
             let treatedHours = TimeViewModel().secondsInHours(seconds: totalInSeconds)
             let treatedMinutes = TimeViewModel().secondsInMinutes(seconds: totalInSeconds)
             let treatedSeconds = TimeViewModel().seconds(totalInSeconds)
-            let treatedTime = TimeViewModel().formatTime(hours: treatedHours, minutes: treatedMinutes, seconds: treatedSeconds)
+            var treatedTime = TimeViewModel().formatTime(hours: treatedHours, minutes: treatedMinutes, seconds: treatedSeconds)
             let treatedTitle = self.title == "" ? "Timer" : self.title
             let treatedSubtitle = self.subtitle == "" ? "Etapa única" : self.subtitle
             
             if self.enableSteps {
+                self.stepsBoolean.toggle()
                 totalInSeconds = 0
                 for step in self.steps {
                     totalInSeconds += step.stepTotalTime
                 }
+                treatedTime = String(self.steps[0].stepTotalTime)
             }
             
-            self.addTimer(.init(id: self.id, title: treatedTitle, subtitle: treatedSubtitle, timer: treatedTime,  totalTime: totalInSeconds, repeatTimer: self.repeatTimer, repetitionNumber: self.timesToRepeat+2, steps: self.steps))
+            self.addTimer(.init(id: self.id, title: treatedTitle, subtitle: treatedSubtitle, timer: treatedTime,  totalTime: totalInSeconds, repeatTimer: self.repeatTimer, repetitionNumber: self.timesToRepeat+2, steps: self.steps, stepsBool: self.stepsBoolean))
             self.presentationMode.wrappedValue.dismiss()
         }) {
             ZStack {
